@@ -30,7 +30,7 @@
 //			e.printStackTrace();
 //		}
 //	}
-//	
+//
 //	public void createAndStopService() {
 //		driver.quit();
 //		service.stop();
@@ -40,7 +40,7 @@
 //		String js = "window.scrollTo(0,document.body.scrollHeight/"+count+"*"+i+");";
 //		return js;
 //	}
-//	
+//
 //	// {@literal }
 //	public List<BatteryInfo> googleSearch(String url) {
 //		//String url = "http://p4psearch.1688.com/p4p114/p4psearch/offer2.htm?keywords=%E7%94%B5%E6%B1%A0&cosite=baidujj&location=&trackid=4014000002631796&p4pid=1464007107509033253184&se=&spm=a312h.7841636.1998813771.dsearch_1998813775_0";
@@ -61,14 +61,14 @@
 //		//for(int k = 0;k<list.size();k++){
 //		for(int k = 0;k<11;k++){
 //			Map<String,String> map = new HashMap<>();
-//			System.out.println("dealing with "+(k+1)+" ¸ö");
+//			System.out.println("dealing with "+(k+1)+" ï¿½ï¿½");
 //			WebElement element = list.get(k);
 //			//System.out.println(element.getText());
 //			WebElement lielement = element.findElement(By.tagName("div")).findElement(By.tagName("div")).findElement(By.tagName("a"));
 //			String hrefUrl = lielement.getAttribute("href");
-//			System.out.println("Á´½ÓµÄurl:"+hrefUrl);
+//			System.out.println("ï¿½ï¿½ï¿½Óµï¿½url:"+hrefUrl);
 //			String imageUrl = lielement.findElement(By.tagName("img")).getAttribute("src");
-//			System.out.println("Í¼Æ¬url£º"+imageUrl);
+//			System.out.println("Í¼Æ¬urlï¿½ï¿½"+imageUrl);
 //			map.put("hrefUrl", hrefUrl);
 //			map.put("imageUrl", imageUrl);
 //			baseList.add(map);
@@ -77,7 +77,7 @@
 //			driver.get(m.get("hrefUrl"));
 //			WebElement myEle = driver.findElement(By.id("mod-detail-title"));
 //			String energyName=myEle.findElement(By.tagName("h1")).getText();
-//			System.out.println("µç³ØÃû×Ö£º"+energyName);
+//			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½"+energyName);
 //			List<WebElement> trsElements = driver.findElement(By.id("mod-detail-attributes")).findElement(By.tagName("tbody"))
 //					.findElements(By.tagName("tr"));
 //			BatteryInfo battery = new BatteryInfo() ;
@@ -85,7 +85,7 @@
 //			battery.setFromUrl(m.get("hrefUrl"));
 //			for(int i = 0;i<trsElements.size();i++){
 //				List<WebElement> tdsElements = trsElements.get(i).findElements(By.tagName("td"));
-//				
+//
 //				for(int j = 0 ; j+1<tdsElements.size();j++,j++){
 //					String tagName = tdsElements.get(j).getText();
 //					String value = tdsElements.get(j+1).getText();
@@ -96,8 +96,8 @@
 //		}
 //		return listBattery;
 //	}
-//	
-//	//µç³ØÐÅÏ¢¸³Öµ
+//
+//	//ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Öµ
 //	private void initBatteryInfo(BatteryInfo battery,String tagName,String value){
 //		if(tagName == null||"".equals(tagName.trim()))
 //			return;
@@ -107,39 +107,39 @@
 //		battery.getExtList().add(info);
 //		//System.out.println(tagName+":"+value);
 //		switch(tagName){
-//		case "Æ·ÅÆ":
+//		case "Æ·ï¿½ï¿½":
 //			battery.setBrand(value);
 //			break;
-////		case "ÐÍºÅ":
+////		case "ï¿½Íºï¿½":
 ////			battery.setModel(value);
 ////			break;
-////		case "¼Ó¹¤¶¨ÖÆ":
+////		case "ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½":
 ////			battery.setIsMachining(value);
 ////			break;
-////		case "ÀàÐÍ":
+////		case "ï¿½ï¿½ï¿½ï¿½":
 ////			battery.setType(value);
 ////			break;
-////		case "±ê³ÆµçÑ¹":case "±ê×¼µçÑ¹":
+////		case "ï¿½ï¿½Æµï¿½Ñ¹":case "ï¿½ï¿½×¼ï¿½ï¿½Ñ¹":
 ////			battery.setStandardVoltage(value);
 ////			break;
-////		case "·ÅµçÌõ¼þ":
+////		case "ï¿½Åµï¿½ï¿½ï¿½ï¿½ï¿½":
 ////			battery.setDischarge(value);break;
-////		case "ÖÕÖ¹µçÑ¹":
+////		case "ï¿½ï¿½Ö¹ï¿½ï¿½Ñ¹":
 ////			battery.setTermiVoltage(value);break;
-////		case "²úÆ·ÈÏÖ¤":
+////		case "ï¿½ï¿½Æ·ï¿½ï¿½Ö¤":
 ////			battery.setProCert(value);break;
-////		case "²ÄÖÊ":
+////		case "ï¿½ï¿½ï¿½ï¿½":
 ////			battery.setMaterial(value);break;
-////		case "ÊÊÓÃ·¶Î§":
+////		case "ï¿½ï¿½ï¿½Ã·ï¿½Î§":
 ////			battery.setUseRegion(value);break;
-////		case "°ü×°":
+////		case "ï¿½ï¿½×°":
 ////			battery.setPack(value);break;
-////		case "ÖÊÁ¿ÈÏÖ¤":
+////		case "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤":
 ////			battery.setQualityCert(value);break;
-////		case "»·¾³ÈÏÖ¤":
+////		case "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤":
 ////			battery.setEnvironmentalCert(value);break;
-////		case "±£ÖÊÆÚÏÞ":battery.setShelfLife(value);break;
-////		case "¾»ÖØ":battery.setWeight(value);break;
+////		case "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½":battery.setShelfLife(value);break;
+////		case "ï¿½ï¿½ï¿½ï¿½":battery.setWeight(value);break;
 //		}
 //	}
 //}
