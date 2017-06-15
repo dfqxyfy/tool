@@ -1,0 +1,3 @@
+defaults=cn.ccs.dubbo.extensionloader.DefaultExtensionImpl
+other=cn.ccs.dubbo.extensionloader.OtherExtensionImpl
+adaptive=cn.ccs.dubbo.extensionloader.MyAdaptiveExtension

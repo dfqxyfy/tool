@@ -1,5 +1,6 @@
 package cn.ccs.dubbo.extensionloader;
 
+import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 
 /**
@@ -12,7 +13,8 @@ public class ExtensionTest {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         ExtensionLoader extensionLoader = ExtensionLoader.getExtensionLoader(MyInterface.class);
         MyInterface myFirstExtension = (MyInterface) extensionLoader.getAdaptiveExtension();
-        System.out.println(myFirstExtension.sayHello("xxx", ExtensionType.defaults));
-        System.out.println(myFirstExtension.sayHello("xxx", ExtensionType.other));
+        URL url = new URL("http","127.0.0.1",8080);
+        System.out.println(myFirstExtension.sayHello(url,"xxx", ExtensionType.defaults));
+        System.out.println(myFirstExtension.sayHello(url, "xxx", ExtensionType.other));
     }
 }

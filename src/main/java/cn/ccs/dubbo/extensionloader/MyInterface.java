@@ -1,5 +1,7 @@
 package cn.ccs.dubbo.extensionloader;
 
+import com.alibaba.dubbo.common.URL;
+import com.alibaba.dubbo.common.extension.Adaptive;
 import com.alibaba.dubbo.common.extension.SPI;
 
 /**
@@ -7,5 +9,6 @@ import com.alibaba.dubbo.common.extension.SPI;
  */
 @SPI("defaults")
 public interface MyInterface {
-    String sayHello(String name, String type);
+    @Adaptive
+    String sayHello(URL url, String name, String type);
 }
