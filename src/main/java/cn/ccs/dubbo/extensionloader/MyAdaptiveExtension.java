@@ -7,8 +7,12 @@ import com.alibaba.dubbo.common.extension.ExtensionLoader;
 /**
  * Created by chaichuanshi on 2017/6/12.
  */
-@Adaptive
+//@Adaptive
 public class MyAdaptiveExtension implements MyInterface {
+    public MyAdaptiveExtension(){
+        System.out.println(this.getClass().getSimpleName());
+    }
+
     @SuppressWarnings("rawtypes")
     @Override
     public String sayHello(URL url, String name, String type) {
