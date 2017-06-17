@@ -28,4 +28,9 @@ public class MyAdaptiveExtension implements MyInterface {
         }
         return extension.sayHello(url, name, type);
     }
+
+    @Override
+    public String sayNo(String name) {
+        return null;
+    }
 }

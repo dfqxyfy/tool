@@ -16,4 +16,9 @@ public class OtherExtensionImpl implements MyInterface {
         return this.getClass().getName() + "  " + name + "  " + type;
     }
 
+    @Override
+    public String sayNo(String name) {
+        return null;
+    }
+
 }

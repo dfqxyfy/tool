@@ -11,4 +11,6 @@ import com.alibaba.dubbo.common.extension.SPI;
 public interface MyInterface {
     @Adaptive
     String sayHello(URL url, String name, String type);
+
+    String sayNo(String name);
 }
