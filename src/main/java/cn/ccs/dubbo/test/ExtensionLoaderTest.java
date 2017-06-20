@@ -15,8 +15,8 @@ public class ExtensionLoaderTest {
 
     @Test
     public void getClassSimpleName(){
-        System.out.println(MyInterface.class.getSimpleName());
-        System.out.println(MyInterface.class.getCanonicalName());
+        //System.out.println(MyInterface.class.getSimpleName());
+        //System.out.println(MyInterface.class.getCanonicalName());
 
     }
     @Test
