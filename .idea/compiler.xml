@@ -11,7 +11,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="spring-boot-simple" target="1.8" />
       <module name="tool" target="1.8" />
     </bytecodeTargetLevel>
   </component>
