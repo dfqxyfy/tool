@@ -1,10 +1,10 @@
 package cn.ccs.netty.nettyprotocol;
 
 import io.netty.channel.ChannelHandlerAdapter;
-import io.netty.channel.ChannelHandlerContext;  
-  
-import java.net.InetSocketAddress;  
-import java.util.Map;  
+import io.netty.channel.ChannelHandlerContext;
+
+import java.net.InetSocketAddress;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;  
   
 public class LoginAuthRespHandler extends ChannelHandlerAdapter{  

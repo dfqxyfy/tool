@@ -1,10 +1,10 @@
 package cn.ccs.netty.nettyprotocol;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;  
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;  
-  
-import java.util.HashMap;  
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+
+import java.util.HashMap;
 import java.util.Map;  
   
 public class NettyMessageDecoder extends LengthFieldBasedFrameDecoder{  
