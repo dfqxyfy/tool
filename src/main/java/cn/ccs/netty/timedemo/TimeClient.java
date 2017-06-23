@@ -1,8 +1,6 @@
 package cn.ccs.netty.timedemo;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -26,27 +24,27 @@ public class TimeClient {
 
 
         final TimeClient timeClient = new TimeClient();
-        new Thread(() -> {
-            for (int i = 0; ; i++) {
-                final int count = i;
-                new Thread(() -> {
-                    if (timeClient.channelFuture != null) {
-                        System.out.println("threading..." + count);
-                        final ByteBuf firstMessage;
-                        byte[] req = ("QUERY TIME ORDER <<aa>>" + count).getBytes();
-                        firstMessage = Unpooled.buffer(req.length);
-                        firstMessage.writeBytes(req);
-                        timeClient.channelFuture.channel().writeAndFlush(firstMessage);
-
-                    }
-                }).start();
-                try {
-                    Thread.sleep(4000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+//        new Thread(() -> {
+//            for (int i = 0; ; i++) {
+//                final int count = i;
+//                new Thread(() -> {
+//                    if (timeClient.channelFuture != null) {
+//                        System.out.println("threading..." + count);
+//                        final ByteBuf firstMessage;
+//                        byte[] req = ("QUERY TIME ORDER <<aa>>" + count).getBytes();
+//                        firstMessage = Unpooled.buffer(req.length);
+//                        firstMessage.writeBytes(req);
+//                        timeClient.channelFuture.channel().writeAndFlush(firstMessage);
+//
+//                    }
+//                }).start();
+//                try {
+//                    Thread.sleep(4000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
         timeClient.connect(port, "127.0.0.1");
 
     }
@@ -63,6 +61,8 @@ public class TimeClient {
                         protected void initChannel(SocketChannel arg0)
                                 throws Exception {
                             System.out.println("client initChannel..");
+                            //arg0.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            //arg0.pipeline().addLast(new StringDecoder());
                             arg0.pipeline().addLast(new TimeClientHandler());
                         }
                     });

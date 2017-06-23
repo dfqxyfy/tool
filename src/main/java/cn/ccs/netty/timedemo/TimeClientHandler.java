@@ -13,19 +13,30 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
     private static final Logger logger = Logger
             .getLogger(TimeClientHandler.class.getName());
 
-    private final ByteBuf firstMessage;
+    private int counter=0;
+    private byte[] req;
+    //private final ByteBuf firstMessage;
 
     public TimeClientHandler() {
-        byte[] req = "QUERY TIME ORDER".getBytes();
-        firstMessage = Unpooled.buffer(req.length);
-        firstMessage.writeBytes(req);
+        req = ("QUERY TIME ORDER"+System.getProperty("line.separator")).getBytes();
+        //firstMessage = Unpooled.buffer(req.length);
+        //firstMessage.writeBytes(req);
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         //与服务端建立连接后
         System.out.println("client channelActive..");
-        ctx.writeAndFlush(firstMessage);
+        //ctx.writeAndFlush(firstMessage);
+
+        ByteBuf message = null;
+        for (int i = 0; i < 100; i++) {
+            req = ("QUERY TIME ORDER" + i + System.getProperty("line.separator")).getBytes();
+            message = Unpooled.buffer(req.length);
+            message.writeBytes(req);
+            ctx.writeAndFlush(message);
+        }
+
     }
 
     @Override
@@ -37,7 +48,7 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
         String body = new String(req, "UTF-8");
-        System.out.println("Now is :" + body);
+        System.out.println("Now is :" + body + "; The counter is " + ++counter );
     }
 
     @Override
@@ -47,6 +58,7 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
         // 释放资源
         logger.warning("Unexpected exception from downstream:"
                 + cause.getMessage());
+        cause.printStackTrace();
         ctx.close();
     }
 
