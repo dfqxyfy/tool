@@ -14,6 +14,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 该demo是netty权威上的
+ */
 public class NettyClient {
 
     EventLoopGroup group = new NioEventLoopGroup();
@@ -22,7 +25,10 @@ public class NettyClient {
     public static void main(String[] args) {
         int port = 8080;
         new NettyClient().connect(port, "127.0.0.1");
+
     }
+
+    private static ChannelFuture channelFuture;
 
     public void connect(final int port, final String host) {
         try {
@@ -44,7 +50,9 @@ public class NettyClient {
 
                     });
             ChannelFuture f = b.connect(host, port).sync();
+            channelFuture = f;
             f.channel().closeFuture().sync();
+            System.out.println("aaaaaaaa");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

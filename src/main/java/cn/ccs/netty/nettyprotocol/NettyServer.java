@@ -12,6 +12,9 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 
+/**
+ * 该demo是netty权威上的
+ */
 public class NettyServer {
 
     public static void main(String[] args) {

@@ -10,7 +10,7 @@ import java.util.Map;
   
 public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage>{  
       
-    NettyMarshallingEncoder marshallingEncoder;  
+    NettyMarshallingEncoder marshallingEncoder;
       
     public NettyMessageEncoder(){  
         marshallingEncoder = MarshallingCodeCFactory.buildMarshallingEncoder();  
