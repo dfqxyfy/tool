@@ -44,10 +44,11 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
             throws Exception {
         System.out.println("client channelRead:"+msg);
         //服务端返回消息后
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-        String body = new String(req, "UTF-8");
+//        ByteBuf buf = (ByteBuf) msg;
+//        byte[] req = new byte[buf.readableBytes()];
+//        buf.readBytes(req);
+//        String body = new String(req, "UTF-8");
+        String body = (String)msg;
         System.out.println("Now is :" + body + "; The counter is " + ++counter );
     }
 
