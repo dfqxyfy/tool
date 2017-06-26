@@ -8,6 +8,7 @@ import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
 import org.jboss.marshalling.MarshallingConfiguration;
 
+
 public class MarshallingCodeCFactory {
 
 	public static NettyMarshallingDecoder buildMarshallingDecoder() {
@@ -16,6 +17,7 @@ public class MarshallingCodeCFactory {
 		configuration.setVersion(5);
 		UnmarshallerProvider provider = new DefaultUnmarshallerProvider(marshallerFactory, configuration);
 		NettyMarshallingDecoder decoder = new NettyMarshallingDecoder(provider, 10240);
+		org.jboss.marshalling.serial.SerialProviderDescriptor sp;
 		return decoder;
 	}
 	

@@ -13,7 +13,8 @@ public class HeartBeatRespHandler extends ChannelHandlerAdapter{
             System.out.println("server receive client heart message " + message);  
             NettyMessage heartBeat = buildHeartBeat();  
             ctx.writeAndFlush(heartBeat);  
-        } else {  
+        } else {
+            System.out.println("else:"+msg);
             ctx.fireChannelRead(msg);  
         }  
     }  

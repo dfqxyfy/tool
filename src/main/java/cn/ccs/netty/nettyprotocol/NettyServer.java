@@ -10,7 +10,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.timeout.ReadTimeoutHandler;
 
 /**
  * 该demo是netty权威上的
@@ -36,10 +35,12 @@ public class NettyServer {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
-                            ch.pipeline().addLast(new NettyMessageEncoder());
-                            ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
-                            ch.pipeline().addLast(new LoginAuthRespHandler());
-                            ch.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
+                            //ch.pipeline().addLast(new NettyMessageEncoder());
+                            ch.pipeline().addLast(new CcsReadHandler());
+                            ch.pipeline().addLast(new CcsStringHandler());
+                            //ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
+                            //ch.pipeline().addLast(new LoginAuthRespHandler());
+                            //ch.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
                         }
                     });
             ChannelFuture f = b.bind(port).sync();

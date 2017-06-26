@@ -8,7 +8,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -43,16 +42,38 @@ public class NettyClient {
                                 throws Exception {
                             ch.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
                             ch.pipeline().addLast("MessageEncoder", new NettyMessageEncoder());
-                            ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
-                            ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
-                            ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
+                            //ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
+                            //ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
+                            //ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
                         }
 
                     });
-            ChannelFuture f = b.connect(host, port).sync();
+            final ChannelFuture f = b.connect(host, port).sync();
             channelFuture = f;
-            f.channel().closeFuture().sync();
+
+            new Thread(){
+                @Override public void run(){
+                    while(true){
+                        Header header = new Header();
+                        header.setType((byte)6);  //心跳应答消息
+                        //header.setLength(100);
+
+                        NettyMessage message = new NettyMessage();
+                        message.setHeader(header);
+                        message.setBody("asfdsaf");
+                        //message.setBody("");
+                        System.out.println("writing.........");
+                        f.channel().writeAndFlush(message);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            System.out.println("error");
+                            e.printStackTrace();
+                        }
+                    }};
+            }.start();
             System.out.println("aaaaaaaa");
+            f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
