@@ -2,7 +2,6 @@ package cn.ccs.dubbo.extensionloader;
 
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.compiler.support.AdaptiveCompiler;
-import com.alibaba.dubbo.common.extension.Adaptive;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 
 import java.util.Map;

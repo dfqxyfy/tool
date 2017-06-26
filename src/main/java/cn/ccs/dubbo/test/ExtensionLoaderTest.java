@@ -1,5 +1,6 @@
 package cn.ccs.dubbo.test;
 
+import cn.ccs.dubbo.extensionloader.MyInterface;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import org.junit.Test;
 

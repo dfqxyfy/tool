@@ -26,7 +26,7 @@ public class ExchangerTest {
     @Test
     public void testServer() throws Exception {
         serverURL = serverURL.addParameter(Constants.HEARTBEAT_KEY, 1000);
-        ExchangeServer server = Exchangers.bind(serverURL, new MyExchangeHandler(){
+        final ExchangeServer server = Exchangers.bind(serverURL, new MyExchangeHandler(){
             public void sent(Channel channel, Object message) throws RemotingException {
                 System.out.println("SERVER:: SENT..... "+message);
                 //received(channel,"[server deal..<<<<"+message+">>>> ]");
@@ -36,6 +36,21 @@ public class ExchangerTest {
                 logger.error(this.getClass().getSimpleName() + message.toString());
             }
         }, new MyReplier());
+        new Thread() {
+            @Override
+            public void run() {
+                while(true) {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                    }
+                    System.out.println("num......." + server.getChannels().size());
+                    server.getChannels().forEach(channel -> {
+                        System.out.println(channel.isConnected());
+                    });
+                }
+            }
+        }.start();
         System.out.println("Server bind successfully");
         Thread.sleep(300000);
 
