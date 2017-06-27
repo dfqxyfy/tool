@@ -5,6 +5,8 @@ import com.alibaba.dubbo.remoting.buffer.ChannelBuffer;
 import com.alibaba.dubbo.rpc.protocol.dubbo.DubboCodec;
 import org.junit.Test;
 
+import java.io.IOException;
+
 /**
  * Created by chaichuanshi on 2017/6/21.
  */
@@ -23,11 +25,11 @@ public class DubboCodecTest {
     }
 
     @Test
-    public void encode(){
+    public void encode() throws IOException {
         DubboCodec dubboCodec = new DubboCodec();
-        Channel channel ;
-        ChannelBuffer buffer;
-        Object msg;
+        Channel channel = null;
+        ChannelBuffer buffer = null;
+        Object msg = null;
         dubboCodec.encode(channel,buffer,msg);
     }
 }

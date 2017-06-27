@@ -1,4 +1,4 @@
-//package com.ccs.spider;
+package com.ccs.spider;
 //
 //import java.io.IOException;
 //import java.util.ListIterator;
@@ -17,7 +17,7 @@
 //			System.out.println(doc);
 //			Elements sel = doc.select("#sm-maindata");
 //			sel = doc.select("#sm-maindata div ul li");
-//			//±éÀúÃ¿Ò»¸öµç³ØµÄËùÓÐÐÅÏ¢
+//			//ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 //			ListIterator<Element> listIterator = sel.listIterator();
 //			while(listIterator.hasNext()){
 //				Element element = listIterator.next();
@@ -27,7 +27,7 @@
 //					Element div1 = batteryInfoList.next();
 //					String nextPageUrl = div1.select("a").get(0).attr("href");
 //					String imageUrl = div1.select("a").select("img").get(0).attr("src");
-//					System.out.println("Ò³ÃæÐÅÏ¢:"+nextPageUrl +":"+imageUrl);
+//					System.out.println("Ò³ï¿½ï¿½ï¿½ï¿½Ï¢:"+nextPageUrl +":"+imageUrl);
 //				}
 //				//System.out.println(element.html());
 //			}
@@ -38,12 +38,12 @@
 //	
 //	@Test
 //	public void myTest(){
-//		//»ù±¾ÍøÒ³ÐÅÏ¢
+//		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ï¢
 //		String url = "http://p4psearch.1688.com/p4p114/p4psearch/offer.htm?keywords=%E7%94%B5%E6%B1%A0&cosite=baidujj&location=&trackid=4014000002631796&p4pid=1463540912761033253169&spm=...dsearch__0";
 //		getType(url);
 //		
-//		String energyInfo = "<a class=\"category-name  current \" href=\"/p4p114/p4psearch/offer2.htm?keywords=%E6%B1%82%E8%B4%AD%E7%94%B5%E6%B1%A0&amp;cosite=baidujj&amp;trackid=4014000002631796&amp;pid=&amp;location=&amp;p4pid=1463551808815033253967&amp;se=&amp;step=2\" target=\"_self\" data-spm=\"drel_1998813771_1\" keywords=\"Çó¹ºµç³Ø\">Çó¹ºµç³Ø</a>";
-//		//µÚÒ»¸öµç³ØÍøÒ³ÐÅÏ¢
+//		String energyInfo = "<a class=\"category-name  current \" href=\"/p4p114/p4psearch/offer2.htm?keywords=%E6%B1%82%E8%B4%AD%E7%94%B5%E6%B1%A0&amp;cosite=baidujj&amp;trackid=4014000002631796&amp;pid=&amp;location=&amp;p4pid=1463551808815033253967&amp;se=&amp;step=2\" target=\"_self\" data-spm=\"drel_1998813771_1\" keywords=\"ï¿½ó¹ºµï¿½ï¿½\">ï¿½ó¹ºµï¿½ï¿½</a>";
+//		//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ï¢
 //		String tempUrl="http://dj.1688.com/ci_bb?spm=a312h.7841636.1998813769.d_pic_1.Milnbc&a=937948601&e=4oqtN216x2AOqIWD3kSLB85k6t0xdd.nGhO-3zWKuvSr8vCnAXfvJyFHJAcyeE2yvbo6FBttBPBqWs9XGwgKdGpTVgL.gS8WRwEY-g7UQUILf72FBX.-5If6OVMHXUijzkrFrL0xW4lcshWQljLSYFOeRvRLD9OybjaNcMiVLViRNAERnC6brWrnqlIbYRCsY1dtmQEYpzSeCwArEIMDZxpBvWC52O3bhXCrBgi6lbgf9vAAFoN9S5pce5xMOJNYBQC0m14S-ySWGv1DVya0cQTWUfcEMDwWcxZCrxUbJS2sb5vVD2WkXQSXDXwiUkeiAseRJxanVKn0TqQqU6cmyVMrHhk4fYevFDXUPQIOqa1N9f02-YEpUjkj1RSV9YCPFZybhYHVG1QKhFh-sbYAKLVfTObiMZcctiVYglpCQwSGdI8AMePWAG06QnPfO3PmzcQtUglZms1ckB16eURrePmD9ICf9lmcty3heM3TfK1mSqve0aWgth9WUkrWHfOyyJmyj9VyrFdefL58gqxm3Q1b3XGlUhI-p4XadLqlj3PsQ.UACh6VssfMw4gwVmPv0STYIFIMlcj3hy7XL5ocbOFj0ch7OmjXxt-7QpNjSQ27x1dqueXipxQOf5mZALDb&v=4&ap=1&rp=1";
 //		
 //		url="https://detail.1688.com/offer/40571479446.html?spm=a312h.7841636.1998813769.d_pic_1.YWAZfX&tracelog=p4p";

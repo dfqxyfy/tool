@@ -40,7 +40,7 @@ public class NettyLuckServer {
 
             Thread.sleep(10000);
             //jdk.internal.misc.Unsafe un;
-            jdk.internal.cmm.SystemResourcePressureImpl j;
+            //jdk.internal.cmm.SystemResourcePressureImpl j;
             // 等待关闭,同步端口
             ch.close();//.sync();
 

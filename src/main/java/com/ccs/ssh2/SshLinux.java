@@ -1,4 +1,4 @@
-//package com.ccs.ssh2;
+package com.ccs.ssh2;
 //
 //import java.io.BufferedReader;
 //import java.io.IOException;
@@ -18,17 +18,17 @@
 //		int PORT = 22;
 //		Connection con = new Connection(IP, PORT);
 //
-//		//Á¬½Ó
+//		//ï¿½ï¿½ï¿½ï¿½
 //
 //		con.connect();
 //
-//		//Ô¶³Ì·þÎñÆ÷µÄÓÃ»§ÃûÃÜÂë
+//		//Ô¶ï¿½Ì·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //
 //		String remoteUser = "root";
 //		String remotePass = "Youyou200609";
 //		boolean isAuthed = con.authenticateWithPassword(remoteUser,remotePass);
 //
-//		//½¨Á¢SCP¿Í»§¶Ë
+//		//ï¿½ï¿½ï¿½ï¿½SCPï¿½Í»ï¿½ï¿½ï¿½
 //		SCPClient scpClient = con.createSCPClient();
 //
 //		Session openSession = con.openSession();
