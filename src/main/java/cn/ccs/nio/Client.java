@@ -27,8 +27,9 @@ public class Client {
                 int i = 0;
                 int socketCount = 1;
                 while (true) {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.SECONDS.sleep(3);
                     String info = "I'm " + i++ + "-th information from client";
+                    info = "abcdefghi" ;//+ i++;
                     buffer.clear();
                     buffer.put(info.getBytes());
                     buffer.flip();

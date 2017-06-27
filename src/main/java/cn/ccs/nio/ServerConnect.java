@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class ServerConnect
 {
-    private static final int BUF_SIZE=1024;
+    private static final int BUF_SIZE=8;
     private static final int PORT = 8080;
     private static final int TIMEOUT = 3000;
 
@@ -31,11 +31,20 @@ public class ServerConnect
         SocketChannel sc = (SocketChannel)key.channel();
         ByteBuffer buf = (ByteBuffer)key.attachment();
         long bytesRead = sc.read(buf);
+
+        for(int i = 0;i<buf.capacity();i++){
+            byte b = buf.get(i);
+            System.out.print(b+",");
+        }
+        System.out.println();
+
         while(bytesRead>0){
             buf.flip();
+            System.out.print("****>>> ");
             while(buf.hasRemaining()){
                 System.out.print((char)buf.get());
             }
+            System.out.print(" <<<****char ");
             System.out.println();
             buf.clear();
             bytesRead = sc.read(buf);
