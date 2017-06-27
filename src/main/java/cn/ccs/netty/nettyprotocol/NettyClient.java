@@ -60,7 +60,7 @@ public class NettyClient {
 
                         NettyMessage message = new NettyMessage();
                         message.setHeader(header);
-                        message.setBody("asfdsaf");
+                        message.setBody("abcdef");
                         //message.setBody("");
                         System.out.println("writing.........");
                         f.channel().writeAndFlush(message);

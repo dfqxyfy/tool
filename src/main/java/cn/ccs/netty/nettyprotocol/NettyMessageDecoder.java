@@ -21,9 +21,17 @@ public class NettyMessageDecoder extends LengthFieldBasedFrameDecoder{
   
     @Override  
     public Object decode(ChannelHandlerContext ctx, ByteBuf in)  
-            throws Exception {  
-        ByteBuf frame = (ByteBuf)super.decode(ctx, in);  
-        if (frame == null) {  
+            throws Exception {
+        for(int i = 0 ;i < in.capacity(); i++){
+            System.out.print(in.getByte(i)+",");
+        }
+        System.out.println();
+        ByteBuf frame = (ByteBuf)super.decode(ctx, in);
+        for(int i = 0 ;i < frame.capacity(); i++){
+            System.out.print(frame.getByte(i)+",");
+        }
+        System.out.println();
+        if (frame == null) {
             return null;  
         }  
         NettyMessage message = new NettyMessage();  
