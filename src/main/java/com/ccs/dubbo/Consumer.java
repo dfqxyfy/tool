@@ -17,6 +17,7 @@ public class Consumer {
         try {
             message = dubboService.sayHello("2016-10-20");
             System.out.println(" the message from server is:" + message);
+            Thread.sleep(10000);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

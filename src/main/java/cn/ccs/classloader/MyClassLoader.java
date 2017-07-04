@@ -78,6 +78,9 @@ public class MyClassLoader extends ClassLoader{
     }
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+        outLoader(Thread.currentThread().getContextClassLoader());
+
         //loader1的父加载器为系统类加载器
         MyClassLoader loader1 = new MyClassLoader("loader1");
         loader1.setPath("D:/lib/lib1/");
@@ -100,5 +103,12 @@ public class MyClassLoader extends ClassLoader{
         Object object3 = clazz3.newInstance();
         //Method method = new Method();
 
+    }
+
+    private static void outLoader(ClassLoader classLoader) {
+        System.out.println(classLoader);
+        if (classLoader.getParent() != null){
+            outLoader(classLoader.getParent());
+        }
     }
 }
