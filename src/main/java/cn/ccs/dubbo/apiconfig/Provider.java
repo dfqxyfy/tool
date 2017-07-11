@@ -43,9 +43,13 @@ public class Provider {
 
         // 暴露及注册服务
         service.export();
+
+//        service.setVersion("2.0.0");
+//        service.export();
+
         System.out.println("over............");
         try{
-            Thread.sleep(100000);
+            Thread.sleep(1000000);
         }catch (Exception e){
             e.printStackTrace();
         }

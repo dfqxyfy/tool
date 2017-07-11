@@ -9,4 +9,9 @@ public class AbServiceImpl implements AbService {
         System.out.println("************\nabService.........\n************");
         return "************\nabService.........\n************";
     }
+
+    @Override
+    public String getName(String name, Integer age) {
+        return name + " " + age;
+    }
 }

@@ -39,6 +39,7 @@ public class Consumer {
     // 和本地bean一样使用xxxService
         AbService xxxService = reference.get(); // 注意：此代理对象内部封装了所有通讯细节，对象较重，请缓存复用
         String s = xxxService.find();
+        System.out.println("****************");
         System.out.println(s);
     }
 }

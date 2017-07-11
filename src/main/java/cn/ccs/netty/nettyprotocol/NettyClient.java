@@ -42,6 +42,7 @@ public class NettyClient {
                                 throws Exception {
                             ch.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
                             ch.pipeline().addLast("MessageEncoder", new NettyMessageEncoder());
+
                             //ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
                             //ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
                             //ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());

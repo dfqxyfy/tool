@@ -2,6 +2,7 @@ package cn.ccs.concurrent;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -12,6 +13,9 @@ public class ReentrantLockTest {
     @Test
     public void reentrantLockTest(){
         final ReentrantLock lock = new ReentrantLock(true);
+
+
+        Array array = null;
 
         for(int i = 0;i<3;i++) {
             final int bb = i;

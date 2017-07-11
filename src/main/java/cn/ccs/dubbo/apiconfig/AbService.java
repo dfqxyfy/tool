@@ -5,4 +5,6 @@ package cn.ccs.dubbo.apiconfig;
  */
 public interface AbService {
     String find();
+
+    String getName(String name,Integer age);
 }
