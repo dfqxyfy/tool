@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class FileSearch implements Search {
     @Override
-    public List serch(String keyword) {
+    public List<String> serch(String keyword) {
         System.out.println("FileSearch... "+keyword);
         List<String> list = new ArrayList();
         list.add("abFile");

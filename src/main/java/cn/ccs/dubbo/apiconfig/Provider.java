@@ -49,7 +49,7 @@ public class Provider {
 
         System.out.println("over............");
         try{
-            Thread.sleep(1000000);
+            Thread.sleep(10000000);
         }catch (Exception e){
             e.printStackTrace();
         }
