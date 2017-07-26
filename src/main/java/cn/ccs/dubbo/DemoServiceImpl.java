@@ -5,7 +5,7 @@ import cn.ccs.dubbo.notice.Person;
 /**
  * Created by chaichuanshi on 2017/5/16.
  */
-public class DemoServiceImpl implements DemoService{
+public class DemoServiceImpl implements DubboService {
     @Override
     public String sayHello(String world) {
         return "Hello World! " + world;

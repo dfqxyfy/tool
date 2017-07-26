@@ -3,7 +3,7 @@ package cn.ccs.dubbo.xmlconfig;
 /**
  * Created by chaichuanshi on 2017/5/16.
  */
-import cn.ccs.dubbo.DemoService;
+import com.ccs.dubbo.DubboService;
 import cn.ccs.dubbo.notice.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,13 +14,13 @@ public class Consumer {
 
         context.start();
 
-        DemoService demoService = (DemoService)context.getBean("demoService"); // 获取远程服务代理
+        DubboService demoService = (com.ccs.dubbo.DubboService)context.getBean("dubboService"); // 获取远程服务代理
         String hello = demoService.sayHello("world"); // 执行远程方法
         System.out.println( hello ); // 显示调用结果
 
-        Person person = demoService.getPerson(333);
+        String s = demoService.sayHello("333");
         System.out.println("*****************");
-        System.out.println(person.getName());
+        System.out.println(s);
         System.out.println("*****************");
     }
 

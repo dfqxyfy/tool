@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class DataSearch implements Search {
     @Override
-    public List<String> serch(String keyword) {
-        System.out.println("DataSearch... "+keyword);
+    public List serch(String keyword) {
+        System.out.println(this.getClass().getClassLoader()  +  "  DataSearch... " + keyword);
         List<String> list = new ArrayList();
         list.add("abData");
         return list;
