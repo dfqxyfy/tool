@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import java.util.Map;
  */
 
 @Configurable
+@EnableAspectJAutoProxy
 @ComponentScan(value = {"cn.ccs.sping.lazy"},lazyInit = true)
 public class SpringLazyConfig {
 

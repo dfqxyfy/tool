@@ -1,1 +1,2 @@
 adapter=cn.ccs.dubbo.adaptive.Protocol$Adpative
+http=com.alibaba.dubbo.rpc.Protocol

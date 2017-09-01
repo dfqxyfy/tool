@@ -1,0 +1,25 @@
+private class Inliner extends TreeTranslator {
+@Override
+ public void visitAssert(JCAssert tree) {
+    super.visitAssert(tree);
+    JCStatement newNode = makeIfThrowException(tree);
+    result = newNode;
+    tally++;
+ }
+ private JCStatement makeIfThrowException(JCAssert node) {
+ // make: if (!(condition) throw new AssertionError(detail);
+ List<JCExpression> args = node.getDetail() == null
+ ? List.<JCExpression> nil()
+ : List.of(node.detail);
+ JCExpression expr = make.NewClass(
+ null,
+ null,
+ make.Ident(names.fromString("AssertionError")),
+ args,
+ null);
+ return make.If(
+ make.Unary(JCTree.NOT, node.cond),
+ make.Throw(expr),
+ null);
+ }
+}
