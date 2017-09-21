@@ -13,6 +13,7 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
     <dubbo:consumer timeout="5000" />
 
+    <dubbo:protocol id="aadb" transporter="ccsTransporter" ></dubbo:protocol>
     <dubbo:reference id="dubboService"
-                     interface="com.ccs.dubbo.DubboService" />
+                     interface="com.ccs.dubbo.DubboService" protocol="aadb"/>
 </beans>

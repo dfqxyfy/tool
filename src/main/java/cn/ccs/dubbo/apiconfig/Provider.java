@@ -27,7 +27,7 @@ public class Provider {
         // 服务提供者协议配置
         ProtocolConfig protocol = new ProtocolConfig();
         protocol.setName("dubbo");
-        protocol.setName("http");
+        //protocol.setName("http");
         protocol.setPort(12345);
         protocol.setThreads(200);
         //protocol.set;
@@ -41,7 +41,7 @@ public class Provider {
         service.setInterface(AbService.class);
         service.setRef(xxxService);
         service.setVersion("1.0.0");
-        service.setProxy("jdk");
+        //service.setProxy("jdk");
 
         // 暴露及注册服务
         service.export();

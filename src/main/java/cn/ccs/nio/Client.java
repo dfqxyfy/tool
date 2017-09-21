@@ -28,13 +28,14 @@ public class Client {
                 int socketCount = 1;
                 while (true) {
                     TimeUnit.SECONDS.sleep(3);
-                    String info = "I'm " + i++ + "-th information from client";
-                    info = "abcdefghi" ;//+ i++;
+                    String info = null;//"I'm " + i++ + "-th information from client";
+                    info = "abcdefghi" + i++;
                     buffer.clear();
                     buffer.put(info.getBytes());
                     buffer.flip();
                     while (buffer.hasRemaining()) {
-                        System.out.println(buffer);
+
+                        System.out.println(buffer.getChar()+" "+buffer);
                         socketChannel.write(buffer);
                         //socketChannel.shutdownOutput();
 

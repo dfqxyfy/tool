@@ -7,11 +7,14 @@ import com.alibaba.dubbo.remoting.RemotingException;
 import com.alibaba.dubbo.remoting.transport.AbstractServer;
 
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class CcsServer extends AbstractServer {
+
+    private static ServerSocket serverSocket = null;
 
     private URL url;
     private ChannelHandler handler;
@@ -27,17 +30,19 @@ public class CcsServer extends AbstractServer {
 
     @Override
     protected void doOpen() throws Throwable {
-
+        if(serverSocket == null){
+            serverSocket = new ServerSocket(12345);
+        }
     }
 
     @Override
     protected void doClose() throws Throwable {
-
+        serverSocket.close();
     }
 
     @Override
     public boolean isBound() {
-        return false;
+        return true;
     }
 
     @Override

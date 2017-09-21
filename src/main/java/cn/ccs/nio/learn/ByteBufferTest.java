@@ -16,6 +16,19 @@ public class ByteBufferTest {
         out(bytes);
         // Wrap a byte array into a buffer
         ByteBuffer buf = ByteBuffer.wrap(bytes);
+        System.out.println(buf.getChar());
+        System.out.println(buf.get());
+        System.out.println("arrayOffset: "+buf.arrayOffset());
+        while(buf.hasRemaining()){
+            System.out.println(buf.get());
+        }
+
+        System.out.println(buf.isDirect());
+        System.out.println(buf.position());
+        buf.mark();
+        buf.reset();
+        buf.rewind();
+        System.out.println(buf.position());
         out(buf);
         System.out.println(buf.order());
         // Retrieve bytes between the position and limit
@@ -26,13 +39,17 @@ public class ByteBufferTest {
         buf.get(bytes, 0, bytes.length);
         out(buf);
         // Retrieve all bytes in the buffer
+
+        System.out.println(buf.toString());
         buf.clear();
         out(buf);
+
         bytes = new byte[buf.capacity()];
 
         // transfer bytes from this buffer into the given destination array
         buf.get(bytes, 0, bytes.length);
         out(buf);
+
     }
 
     public void out(ByteBuffer buf){

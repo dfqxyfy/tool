@@ -1,9 +1,7 @@
 package cn.ccs.dubbo.transporter;
 
 import cn.ccs.dubbo.apiconfig.AbService;
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ReferenceConfig;
-import com.alibaba.dubbo.config.RegistryConfig;
+import com.alibaba.dubbo.config.*;
 
 /**
  * Created by chaichuanshi on 2017/5/15.
@@ -22,7 +20,10 @@ public class Consumer {
         reference.setApplication(application);
         reference.setRegistry(registry); // 多个注册中心可以用setRegistries()
         reference.setInterface(AbService.class);
+        ConsumerConfig consumer = new ConsumerConfig();
 
+        reference.setConsumer(consumer);
+        reference.setClient("ccsTransporter");
 
         AbService xxxService = reference.get(); // 注意：此代理对象内部封装了所有通讯细节，对象较重，请缓存复用
         String s = xxxService.find();

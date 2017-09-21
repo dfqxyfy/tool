@@ -6,11 +6,13 @@ import com.alibaba.dubbo.remoting.ChannelHandler;
 import com.alibaba.dubbo.remoting.RemotingException;
 import com.alibaba.dubbo.remoting.transport.AbstractClient;
 
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CcsClient extends AbstractClient {
 
+    private Socket socket = null;
 
     private Channel channel = null;
 
@@ -21,12 +23,15 @@ public class CcsClient extends AbstractClient {
 
     @Override
     protected void doOpen() throws Throwable {
+        if(socket == null)
+            socket = new Socket(this.getUrl().getHost(),this.getUrl().getPort());
 
     }
 
     @Override
     protected void doClose() throws Throwable {
-
+        if(socket != null )
+            socket.close();
     }
 
     @Override
