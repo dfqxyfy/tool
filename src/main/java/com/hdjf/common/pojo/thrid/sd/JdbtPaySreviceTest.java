@@ -146,13 +146,17 @@ public class JdbtPaySreviceTest {
 		String charset = "UTF-8";
 		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("refOrderId", "2017091910390001");
+		map.put("refOrderId", "2017091910390002");
 		//map.put("amount", "100");
 		map.put("merchantCode", "6314347443207662593");
 		map.put("merchantOrderId", "2017091910390001");
+		map.put("merchantOrderId", "20170925094126010388-1506303698142-2121");
+		map.put("merchantOrderId", "20170925101434010389-1506305686184-5253");
 		map.put("orderSubmitTime", "20170922173807");
 		map.put("tradeDate", "20170922173809");
-		map.put("orderState", "0");
+		map.put("orderState", "5000");
+		map.put("amount", "110");
+		map.put("stageNum", "6");
 		Map<String,Object> params1 = new HashMap<String,Object>();
 		params1.put("orderEntity", map);
 		params1.put("resultCode", 0);
@@ -181,7 +185,9 @@ public class JdbtPaySreviceTest {
 //		} catch (UnsupportedEncodingException e) {
 //			e.printStackTrace();
 //		}
-		String result = HttpClientUtil.sendPost("http://172.16.7.137:8080/epay-war/ep_pay/epayPay/haierPayBackCallBack.action",JSONObject.toJSONString(params));
+		//String result = HttpClientUtil.sendPost("http://172.16.7.137:8080/epay-war/ep_pay/epayPay/haierPayBackCallBack.action",JSONObject.toJSONString(params));
+		String result = HttpClientUtil.sendPost("http://42.62.70.203/epay-war/ep_pay/epayPay/haierPayBackCallBack.action",JSONObject.toJSONString(params));
+		//String result = HttpClientUtil.sendPost("http://127.0.0.1:8080/epay-war/ep_pay/epayPay/haierPayBackCallBack.action",JSONObject.toJSONString(params));
 		System.out.println("***********************");
 		System.out.println(result);
 
