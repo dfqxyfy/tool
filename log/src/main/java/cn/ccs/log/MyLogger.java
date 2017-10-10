@@ -13,6 +13,13 @@ import java.util.Map;
 public class MyLogger {
 
     public static void main(String[] args) {
+
+        for(String s:args){
+            System.out.println(s);
+        }
+
+        System.out.println(System.getProperty("aaa"));
+
         LogLog.setInternalDebugging(true);
         LogLog.setQuietMode(false);
 
@@ -61,6 +68,8 @@ public class MyLogger {
         logger.info("infomsg.....");
         logger.error("errormsg.....");
 
+        System.out.println(logger.getParent().getName());
+        System.out.println(logger.getClass().getName());
 
         Map m  = new HashMap();
         m.put("adfs","dfsafd");
