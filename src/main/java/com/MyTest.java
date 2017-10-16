@@ -1,5 +1,7 @@
 package com;
 
+import org.springframework.context.ApplicationContext;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -13,5 +15,8 @@ public class MyTest {
 
         String s3 = URLDecoder.decode(s2,"utf-8");
         System.out.printf(s3);
+
+        ApplicationContext ac1 = null;
+
     }
 }
