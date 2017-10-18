@@ -1,9 +1,5 @@
 package cn.ccs.sunlands.excel;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.SpreadsheetVersion;
 import org.apache.poi.ss.usermodel.Cell;
@@ -14,8 +10,13 @@ import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFPivotTable;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.*;
 
-public class CreatePivotTable {
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class CreatePivotTable_bak {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, InvalidFormatException {
         try (XSSFWorkbook wb = new XSSFWorkbook()) {
@@ -45,8 +46,41 @@ public class CreatePivotTable {
             //pivotTable.addDataColumn(0,false);
             //pivotTable.addRowLabel(3);
 
+            if(true) {
 
-            try (FileOutputStream fileOut = new FileOutputStream("ooxml-pivottable11.xlsx")) {
+                CTCacheFields ctCacheFields = pivotTable.getPivotCacheDefinition().getCTPivotCacheDefinition().getCacheFields();
+                CTCacheField ctCacheField = ctCacheFields.addNewCacheField();
+                ctCacheField.setName("真实平均速度bak");
+                ctCacheField.setFormula("距离/时间");
+                ctCacheField.setNumFmtId(0);
+                ctCacheFields.setCount(ctCacheFields.sizeOfCacheFieldArray());//!!! update count of fields directly
+
+                CTPivotField pivotField = pivotTable.getCTPivotTableDefinition().getPivotFields().addNewPivotField();
+                pivotField.setDataField(true);
+                pivotField.setDragToCol(false);
+                pivotField.setDragToPage(false);
+                pivotField.setDragToRow(false);
+                pivotField.setShowAll(false);
+                pivotField.setDefaultSubtotal(false);
+
+                CTDataFields dataFields;
+                if (pivotTable.getCTPivotTableDefinition().getDataFields() != null) {
+                    dataFields = pivotTable.getCTPivotTableDefinition().getDataFields();
+                } else {
+                    // can be null if we have not added any column labels yet
+                    dataFields = pivotTable.getCTPivotTableDefinition().addNewDataFields();
+                }
+                CTDataField dataField = dataFields.addNewDataField();
+                dataField.setName("平均处理Processed");
+                // set index of cached field with formula - it is the last one!!!
+                dataField.setFld(pivotTable.getPivotCacheDefinition().getCTPivotCacheDefinition().getCacheFields().getCount() - 1);
+                dataField.setBaseItem(0);
+                dataField.setBaseField(0);
+
+            }
+
+
+            try (FileOutputStream fileOut = new FileOutputStream("ooxml-pivottable_chufa_shengcheng.xlsx")) {
                 wb.write(fileOut);
             }
         }
