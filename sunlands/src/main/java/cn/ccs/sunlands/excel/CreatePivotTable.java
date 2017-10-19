@@ -46,7 +46,7 @@ public class CreatePivotTable {
             //pivotTable.addRowLabel(3);
 
 
-            try (FileOutputStream fileOut = new FileOutputStream("ooxml-pivottable11.xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream("ooxml-pivottable12.xlsx")) {
                 wb.write(fileOut);
             }
         }
