@@ -37,14 +37,16 @@ public class CreatePivotTable_bak {
             pivotTable.addColumnLabel(DataConsolidateFunction.SUM, 1,"距离");
             //Set the third column as filter
             pivotTable.addColumnLabel(DataConsolidateFunction.SUM, 2,"时间");
-            pivotTable.addColumnLabel(DataConsolidateFunction.AVERAGE, 4,"速度");
+            pivotTable.addColumnLabel(DataConsolidateFunction.SUM, 4,"速度");
+            //pivotTable.addDataColumn(4, true);
             //Add filter on forth column
-            pivotTable.addReportFilter(1);
+            //pivotTable.addReportFilter(1);
             //pivotTable.addColumnLabel(DataConsolidateFunction.PRODUCT,2,"mySum");
 
             //pivotTable.addDataColumn(4,true);
             //pivotTable.addDataColumn(0,false);
-            //pivotTable.addRowLabel(3);
+            pivotTable.addRowLabel(3);
+
 
             if(true) {
 
@@ -52,6 +54,7 @@ public class CreatePivotTable_bak {
                 CTCacheField ctCacheField = ctCacheFields.addNewCacheField();
                 ctCacheField.setName("真实平均速度bak");
                 ctCacheField.setFormula("距离/时间");
+                ctCacheField.setDatabaseField(false);
                 ctCacheField.setNumFmtId(0);
                 ctCacheFields.setCount(ctCacheFields.sizeOfCacheFieldArray());//!!! update count of fields directly
 
@@ -63,6 +66,10 @@ public class CreatePivotTable_bak {
                 pivotField.setShowAll(false);
                 pivotField.setDefaultSubtotal(false);
 
+                pivotField.setAutoShow(true);
+                pivotField.setName("平均速度");
+
+
                 CTDataFields dataFields;
                 if (pivotTable.getCTPivotTableDefinition().getDataFields() != null) {
                     dataFields = pivotTable.getCTPivotTableDefinition().getDataFields();
@@ -70,17 +77,21 @@ public class CreatePivotTable_bak {
                     // can be null if we have not added any column labels yet
                     dataFields = pivotTable.getCTPivotTableDefinition().addNewDataFields();
                 }
+                System.out.println(dataFields.getCount());
                 CTDataField dataField = dataFields.addNewDataField();
+                //CTDataField dataField = dataFields.insertNewDataField(4);
                 dataField.setName("平均处理Processed");
                 // set index of cached field with formula - it is the last one!!!
                 dataField.setFld(pivotTable.getPivotCacheDefinition().getCTPivotCacheDefinition().getCacheFields().getCount() - 1);
                 dataField.setBaseItem(0);
                 dataField.setBaseField(0);
+                System.out.println(dataFields.getCount());
+
 
             }
 
 
-            try (FileOutputStream fileOut = new FileOutputStream("ooxml-pivottable_chufa_shengcheng.xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream("sunlands/mypivot/generateMod.xlsx")) {
                 wb.write(fileOut);
             }
         }
