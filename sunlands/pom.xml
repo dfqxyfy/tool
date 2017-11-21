@@ -2,13 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>tool</artifactId>
-        <groupId>cn.ccs</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>cn.ccs</groupId>
+    <version>1.0-SNAPSHOT</version>
     <artifactId>sunlands</artifactId>
 
     <dependencies>
@@ -36,5 +33,53 @@
             <version>3.17</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.sunlands.sso.client</groupId>
+            <artifactId>cas-client-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!--如果原本没有引入slf4j, 还需引入slf4j-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.10</version>
+        </dependency>
+
     </dependencies>
+
+    <profiles>
+
+        <profile>
+            <id>jdk-1.8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+
+        </profile>
+
+    </profiles>
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <name>shangde snapshots</name>
+            <url>http://172.16.117.215:8100/archiva/repository/snapshots/</url>
+            <!--<layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>interval:60</updatePolicy>
+            </snapshots>-->
+        </repository>
+    </repositories>
 </project>

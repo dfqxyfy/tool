@@ -1,6 +1,7 @@
 package cn.ccs.springboot;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -15,8 +16,9 @@ import java.util.WeakHashMap;
  * Created by chaichuanshi on 2017/1/12.
  */
 
-@Configuration
-@ComponentScan("cn.ccs.spring.springboot")
+@EnableAutoConfiguration
+//@Configuration
+@ComponentScan("cn.ccs.springboot")
 //@ImportResource(value = {"classpath:generatorConfig.xml"})
 @Controller
 public class MySpringBoot {
