@@ -34,11 +34,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>com.sunlands.sso.client</groupId>
-            <artifactId>cas-client-core</artifactId>
-            <version>1.0.1</version>
-        </dependency>
         <!--如果原本没有引入slf4j, 还需引入slf4j-->
         <dependency>
             <groupId>org.slf4j</groupId>
