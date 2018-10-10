@@ -18,7 +18,7 @@ public class MyFileExcel {
            public void run(){
 
                 System.out.println();
-                ExportExcel<Entity> entityExportExcel = new ExportExcel<>();
+                //ExportExcel<Entity> entityExportExcel = new ExportExcel<>();
                 String[] headers = new String[]{"name","age"};
                 String[] orders = new String[]{"name","age"};
 
@@ -28,7 +28,7 @@ public class MyFileExcel {
                     entity.setAge(100+i);
                     entity.setName("aaa"+i);
                 }
-                entityExportExcel.createDataSheet("aaa",headers,orders,list,"yyyy-MM-dd",Entity.class);
+                //entityExportExcel.createDataSheet("aaa",headers,orders,list,"yyyy-MM-dd",Entity.class);
 
 
                 try {
