@@ -2,13 +2,12 @@
 package cn.ccs.demo;
 
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.TimerTask;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -54,15 +53,18 @@ public class NettyWebSocketServer {
         }
     }
 
+    private static Set<ChannelHandlerContext> activeChannelSet = new HashSet<>();
+
     private static class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
         private WebSocketServerHandshaker handshaker;
 
         @Override
         protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
+            activeChannelSet.add(ctx);
             if (msg instanceof FullHttpRequest) {//建立连接的请求
                 handleHttpRequest(ctx, (FullHttpRequest) msg);
             } else if (msg instanceof WebSocketFrame) {//WebSocket
-                handleWebsocketFrame(ctx, (WebSocketFrame) msg);
+                    handleWebsocketFrame(ctx, (WebSocketFrame) msg);
             }
         }
 
@@ -72,12 +74,16 @@ public class NettyWebSocketServer {
             } else if (frame instanceof PingWebSocketFrame) {//ping消息
                 ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
             } else if (frame instanceof TextWebSocketFrame) {//文本消息
-                String request = ((TextWebSocketFrame) frame).text();
-                ctx.channel().write(new TextWebSocketFrame("websocket return:" + request));
+                System.out.println(activeChannelSet.size());
+                activeChannelSet.forEach(context->{
+                    String request = ((TextWebSocketFrame) frame).text();
+                    context.channel().write(new TextWebSocketFrame("聊天室广播:" + request));
+                });
             }
         }
 
         private void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request) {
+
             if (request.decoderResult().isSuccess() && "websocket".equals(request.headers().get("Upgrade"))) {
                 System.out.println("create WebSocket connection");
                 WebSocketServerHandshakerFactory factory = new WebSocketServerHandshakerFactory("ws://localhost:8080/websocket", null, false);
@@ -97,6 +103,7 @@ public class NettyWebSocketServer {
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
             cause.printStackTrace();
             ctx.close();
+            activeChannelSet.remove(ctx);
         }
 
         @Override
@@ -106,11 +113,23 @@ public class NettyWebSocketServer {
                 @Override
                 public void run() {
                     if (handshaker != null) {
-                        ctx.channel().write(new TextWebSocketFrame("server:主动给客户端发消息"));
+                        //ctx.channel().write(new TextWebSocketFrame("server:主动给客户端发消息"));
                         ctx.flush();
                     }
                 }
             }, 1000, 1000);
+        }
+
+        @Override
+        public void disconnect(ChannelHandlerContext ctx, ChannelPromise promise) throws Exception {
+            activeChannelSet.remove(ctx);
+            super.disconnect(ctx,promise);
+        }
+
+        @Override
+        public void close(ChannelHandlerContext ctx, ChannelPromise promise) throws Exception {
+            activeChannelSet.remove(ctx);
+            super.close(ctx,promise);
         }
     }
 }
