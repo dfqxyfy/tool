@@ -12,6 +12,7 @@
         <module>spark</module>
         <module>spider</module>
         <module>hbase</module>
+        <module>springboot</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
