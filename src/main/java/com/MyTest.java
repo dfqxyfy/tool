@@ -14,6 +14,8 @@ public class MyTest {
     private static final LinkedBlockingQueue<List<String>> queue = new LinkedBlockingQueue<List<String>>();
 
     public static void main(String[] args) throws UnsupportedEncodingException {
+
+        System.out.println("adffsaf.32413sad".split("\\.")[0]);
 //
 //
 //
@@ -26,6 +28,9 @@ public class MyTest {
 //
 //        }
 
+        ThreadLocal<String> threadLocal = new ThreadLocal<>();
+        threadLocal.set("aaa");
+        threadLocal.get();
         Object o = null;
         System.out.println((List)o);
     }

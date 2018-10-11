@@ -1,0 +1,20 @@
+
+    SELECT t.audit_user_id ,t.audit_user_name AS auditUserName,
+        COUNT(CASE WHEN channel_type=1 THEN '当前被拒绝广告数' END) AS infoFlowCount_audit_status,
+        COUNT(CASE WHEN channel_type=1 AND audit_status=0 THEN '改后未审数量' END) AS infoFlowCount_claim_status,
+        COUNT(CASE WHEN channel_type=2 THEN '当前被拒绝广告数' END) AS searchCount__audit_status,
+        COUNT(CASE WHEN channel_type=2 AND audit_status=0 THEN '改后未审数量' END) AS searchCount_claim_status
+        FROM audit_idea_record t
+        WHERE t.claim_status=1 AND t.audit_status between 0 and 2
+        GROUP BY t.audit_user_id,audit_user_name
+
+
+db.d_points_detail.aggregate(
+   [
+{ "$group" : { "_id" : "$userId" ,
+"outPointsTotalNum" : { "$sum" : { "$cond" : [ { "$eq" : [ "$type" , 0]} , "$pointsNum" , 0]}},
+"consumePointsTotalNum" : { "$sum" : { "$cond" : [ { "$eq" : [ "$type" , 1]} , "$pointsNum" , 0]}}
+}},
+{ "$sort" : { "outPointsTotalNum" : -1}}
+   ]
+);

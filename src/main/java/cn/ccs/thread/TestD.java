@@ -1,8 +1,36 @@
 package cn.ccs.thread;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TestD {
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println(System.currentTimeMillis());
+
+
+        System.out.println(new TestD());
+
+        String regex = "([\\w\\d]*)(\\.[\\w\\d]*)+@[\\w\\d]+";
+
+
+        Pattern compile = Pattern.compile(regex);
+        String str = new TestD().toString()+".";
+        str = "cn.ccs.thre?ad.TestD@31221b.?e2";
+        Matcher matcher = compile.matcher(str);
+        boolean b = matcher.find();
+        String s = str.replaceAll(regex, "*****");
+
+
+        System.out.println(str);
+        System.out.println(s);
+        System.out.println(matcher.group());;
+        System.out.println(b);
+
+        if(true){
+            return;
+        }
+
         new Thread(new Thread1()).start();
         try {
             Thread.sleep(2000);

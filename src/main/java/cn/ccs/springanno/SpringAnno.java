@@ -35,9 +35,10 @@ public class SpringAnno {
     }
 
     @Autowired
-    private Processor processor;
+    private static Processor processor;
 
     public static void main(String[] args) {
+
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(SpringAnno.class);
 
         Map<String,Object> mapAutowired = annotationConfigApplicationContext.getBeansWithAnnotation(Autowired.class);
@@ -50,5 +51,6 @@ public class SpringAnno {
         beanAutowired.forEach((s,o)->{
             System.out.print(s + "_" + o.getClass());
         });
+
     }
 }

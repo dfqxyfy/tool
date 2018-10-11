@@ -11,8 +11,21 @@ import org.springframework.stereotype.Component;
 public class DubProcessor {
     private static int count = 0;
 
+    private String str ;
     public DubProcessor(){
         System.out.println("构造 " + count++ +" 次");
+    }
+
+    public DubProcessor(String str){
+        this.str = str;
+    }
+
+    public int getCount(){
+        return count;
+    }
+
+    public String getStr() {
+        return str;
     }
 
 }
