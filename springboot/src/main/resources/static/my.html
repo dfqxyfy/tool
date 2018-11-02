@@ -1,0 +1,16 @@
+<html>
+<body>
+
+
+<input type="button" value="ajax cookie 测试" />
+</body>
+</html>
+
+
+
+$(document).ready(function(){
+    $("#b01").click(function(){
+        htmlobj=$.ajax({url:"/jquery/test1.txt",async:false});
+        $("#myDiv").html(htmlobj.responseText);
+    });
+});
