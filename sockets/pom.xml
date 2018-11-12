@@ -9,9 +9,21 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.ccs</groupId>
-    <artifactId>sockets</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>spider</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
