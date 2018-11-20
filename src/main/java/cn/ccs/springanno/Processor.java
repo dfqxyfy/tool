@@ -29,7 +29,7 @@ public class Processor {
     public int getCount(){
 
         MessageFormat mf = new MessageFormat("");
-        mf.format("","","");
+        MessageFormat.format("","","");
 
         String s = "";
         return cc;

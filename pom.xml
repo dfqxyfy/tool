@@ -10,9 +10,7 @@
         <module>log</module>
         <!--<module>sunlands</module>-->
         <module>spark</module>
-        <module>spider</module>
-        <module>hbase</module>
-        <module>springboot</module>
+        <module>sockets</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>

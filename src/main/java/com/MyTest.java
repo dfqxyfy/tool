@@ -5,18 +5,33 @@ import org.springframework.context.ApplicationContext;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class MyTest {
+
+
+    private static final LinkedBlockingQueue<List<String>> queue = new LinkedBlockingQueue<List<String>>();
+
     public static void main(String[] args) throws UnsupportedEncodingException {
-        String s = "&middot;";
-        s="图荪娜依·阿吾提";
-        String s2 = URLEncoder.encode(s,"utf-8");
-        System.out.println(s2);
 
-        String s3 = URLDecoder.decode(s2,"utf-8");
-        System.out.printf(s3);
+        System.out.println("adffsaf.32413sad".split("\\.")[0]);
+//
+//
+//
+//        while(true){
+//            try {
+//                queue.take();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
 
-        ApplicationContext ac1 = null;
-
+        ThreadLocal<String> threadLocal = new ThreadLocal<>();
+        threadLocal.set("aaa");
+        threadLocal.get();
+        Object o = null;
+        System.out.println((List)o);
     }
 }

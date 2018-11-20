@@ -17,10 +17,13 @@ public class ThreadPool {
 //            e.printStackTrace();
 //        }
 //    }
+
+    private static ExecutorService threadPoolExecutor = new ThreadPoolExecutor(0, 3,60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
+
     public static void main(String[] args) {
         for(int i = 0;i<10;i++){
             final int a = i;
-            fixedThreadPool.submit(new Runnable() {
+            threadPoolExecutor.submit(new Runnable() {
                 @Override
                 public void run() {
                     System.out.println(a);

@@ -21,4 +21,8 @@ public class MyFile {
         System.out.println(f.getAbsolutePath());
         System.out.println(f.exists());
     }
+
+    public void my(){
+
+    }
 }
