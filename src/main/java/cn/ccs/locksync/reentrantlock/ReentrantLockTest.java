@@ -1,4 +1,4 @@
-package cn.ccs.concurrent;
+package cn.ccs.locksync.reentrantlock;
 
 import org.junit.Test;
 

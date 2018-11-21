@@ -34,5 +34,15 @@ public class Regex {
         String s2 = s.replaceAll(regex3, "");
         System.out.println(s1);
         System.out.println(s2);
+
+
+        String st = "(</?)((div)|(body))(>)";
+        String st2 = "<div>afdsafdsaf</div><body>aaaa</body>";
+        String regex22 = "[div,body]+";
+        System.out.println(st.matches(regex22));
+        System.out.println(st2.matches(regex22));
+
+        System.out.println(st2.replaceAll(st,"$1"));
+
     }
 }

@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
 </head>
-<body>
 
+<body id="xsa">
+    <div classs="fsda">aaaab</div>
+        <span>fsadfdasfaf</span>
+    <div>aaxxx</div>
+    <p>aaxxx</p>
 </body>
 </html>
+
+<script>
+    var temp = document.getElementById("xsa").innerHTML.replace(/(\<\/?)((span)|(div))/g,"$1view");
+    console.log(temp);
+</script>
