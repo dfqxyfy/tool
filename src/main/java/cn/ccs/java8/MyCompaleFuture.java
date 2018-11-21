@@ -11,23 +11,30 @@ public class MyCompaleFuture {
     public void testComplete(){
         CompletableFuture<MyFunIn> future =
 
-//                CompletableFuture.completedFuture(new MyFunIn() {
-//            @Override
-//            public void aaTest() {
-//                System.out.println("aaTest success");
-//            }
-//        });
+                CompletableFuture.completedFuture(new MyFunIn() {
+                    @Override
+                    public void aaTest() {
+                        System.out.println("aaTest completed Future success");
+                    }
+                });
 
-                new CompletableFuture<>();
+              //  new CompletableFuture<>();
         future.thenRun(new Runnable() {
             @Override
             public void run() {
                 System.out.println("futurn then run");
             }
         });
+//        future.complete(new MyFunIn() {
+//            @Override
+//            public void aaTest() {
+//                System.out.println("aaTest  complete success");
+//            }
+//        } );
 
         try {
             MyFunIn myFunIn = future.get();
+            myFunIn.aaTest();
             //myFunIn.aaTest();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
