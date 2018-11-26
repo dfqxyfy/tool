@@ -18,10 +18,12 @@ public class SynchObject {
             e.printStackTrace();
         }
         System.out.println("b");
+        methodA();
     }
 
     public static void main(String[] args) {
         SynchObject object = new SynchObject();
+        SynchObject.methodB();
         ThreadA a = new ThreadA(object);
         ThreadB b = new ThreadB(object);
         a.start();
