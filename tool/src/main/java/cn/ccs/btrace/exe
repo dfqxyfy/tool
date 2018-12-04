@@ -1,0 +1,3 @@
+./btrace -cp build 58083 /project/tool/src/main/java/cn/ccs/btrace/TracingHashTable.java
+
+./btrace -cp build 58028 /project/tool/src/main/java/cn/ccs/btrace/demo/BTraceTest.java
