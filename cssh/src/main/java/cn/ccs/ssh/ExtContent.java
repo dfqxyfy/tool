@@ -1,9 +1,5 @@
 package cn.ccs.ssh;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 public class ExtContent {
@@ -51,6 +47,19 @@ public class ExtContent {
         disk.setTotal(total);
         disk.setUsed(used);
         return disk;
+    }
+
+    public Jps checkJps(){
+        String command = "jps";
+        shell.execute(command);
+        ArrayList<String> stdout = shell.getStandardOutput();
+        Jps jps = new Jps();
+        for (String str : stdout) {
+            if(str.contains(".jar")){
+                jps.getJarList().add(str.split("\\s+")[1]);
+            }
+        }
+        return jps;
     }
 
     private Integer dataChange(String ss){

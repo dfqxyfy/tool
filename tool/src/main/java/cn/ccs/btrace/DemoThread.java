@@ -6,6 +6,9 @@ public class DemoThread {
     public static void main(String[] args) {
         TempTrace temp = new TempTrace();
         System.out.println("aaa");
+        System.out.println(System.currentTimeMillis());
+        System.out.println(System.nanoTime());
+
         for(;;) {
             try {
                 long t1 = System.nanoTime();

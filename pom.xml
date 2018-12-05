@@ -8,10 +8,11 @@
     <modules>
         <module>springconfig</module>
         <module>log</module>
-        <!--<module>sunlands</module>-->
+        <module>tool</module>
         <module>spark</module>
         <module>sockets</module>
         <module>cssh</module>
+        <module>myagent</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
