@@ -8,6 +8,6 @@ import org.junit.Test;
 public class RandomDel {
     @Test
     public void aa(){
-
+        int[] inst = new int[2];
     }
 }

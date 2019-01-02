@@ -37,12 +37,7 @@ public class MyMain {
 
     public static void main(final String [] args) {
 
-        File ftemp = new File("aaa.txt");
-        System.out.println(ftemp.getAbsolutePath());;
 
-        if(true){
-            return;
-        }
 
         //Shell shell = new Shell("172.16.225.34", "root", "adey9291!p4");
         List<Server> list = readFile();
@@ -53,10 +48,10 @@ public class MyMain {
             //Shell shell = new Shell("172.16.117.7", "root", "Ll2018%t6");
             Shell shell = new Shell(server.getIp(), server.getUser(), server.getPwd());
             ExtContent extContent = new ExtContent(shell);
-            //Mem mem = extContent.checkMem();
-            //Disk disk = extContent.checkDisk();
-            //System.out.println(mem);
-            //System.out.println(disk);
+            Mem mem = extContent.checkMem();
+            Disk disk = extContent.checkDisk();
+            System.out.println(mem);
+            System.out.println(disk);
             //OutFormat outFormat = new OutFormat(server,disk,mem);
             //resultList.add(outFormat);
             Jps jps = extContent.checkJps();

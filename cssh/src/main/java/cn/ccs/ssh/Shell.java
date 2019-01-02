@@ -49,6 +49,7 @@ public class Shell {
       Session session = jsch.getSession(username, ip, DEFAULT_SSH_PORT);
       session.setPassword(password);
       session.setUserInfo(userInfo);
+      session.setConfig("StrictHostKeyChecking", "no");
       session.connect();
   
       //打开通道，设置通道类型，和执行的命令
@@ -61,7 +62,7 @@ public class Shell {
           (channelExec.getInputStream()));
   
       channelExec.connect();
-      System.out.println("The remote command is :" + command);
+      //System.out.println("The remote command is :" + command);
   
       //接收远程服务器执行命令的结果
       String line;

@@ -13,6 +13,7 @@
         <module>sockets</module>
         <module>cssh</module>
         <module>myagent</module>
+        <module>thirdpay</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
