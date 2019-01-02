@@ -1,20 +1,9 @@
-//package cn.ccs.vm;
-//
-//import sun.tools.attach.HotSpotVirtualMachine;
-//
-//import java.io.ByteArrayOutputStream;
-//import java.io.InputStream;
-//import java.lang.management.ManagementFactory;
-//import java.lang.management.RuntimeMXBean;
-//
-//public class JVMObjNum {
-//    public static void main(String[] args) throws Exception{
-//        RuntimeMXBean bean = ManagementFactory.getRuntimeMXBean();
+//package cn.ean();
 //        String name = bean.getName();
 //        int index = name.indexOf('@');
 //        String pid = name.substring(0, index);
 //        //这里要区分操作系统
-//        //HotSpotVirtualMachine machine = (HotSpotVirtualMachine) new sun.tools.attach.WindowsAttachProvider().attachVirtualMachine(pid);
+//        //HotSpotVirtualMachine machine = (HotSpotVirtualMachine) new sugn.tools.attach.WindowsAttachProvider().attachVirtualMachine(pid);
 //        HotSpotVirtualMachine machine = (HotSpotVirtualMachine) new sun.tools.attach.BsdAttachProvider().attachVirtualMachine(pid);
 //        InputStream is = machine.heapHisto("-all");
 //
