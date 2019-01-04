@@ -2,52 +2,72 @@ package cn.letcode;
 
 public class ZigZagSolution {
     public String convert(String s, int numRows) {
-        int totalCol = s.length()/((numRows+1)/2);
-//        if(s.length()%(numRows+1)%numRows == 0){
-//            totalCol -= 1;
-//        }
-        if(s.length()%((numRows+1)/2)  > 0){
-            totalCol = totalCol + 1;
+        if("".equals(s)||s==null){
+            return "";
         }
-        char result[][] = new char[numRows][totalCol];
-        for(int i=0;i<s.length();i++){
-            char c = s.charAt(i);
+        if(numRows == 1){
+            return s;
+        }
+        int totCol =(s.length()/(numRows+numRows-2) + 1)* (numRows-1);
+        char tempArr[][] = new char[numRows][totCol];
+        System.out.println(numRows+" "+totCol);
+        int row = 0 ;
+        int col = 0;
+        //增加行
+        boolean addRow=true;
+        //增加列
+        boolean addCol=false;
+        for(int k=0;k<s.length();k++){
+            System.out.println("row="+row+" col="+col);
+            tempArr[row][col] = s.charAt(k);
 
-            //选出  i 该放在第几行，第几列
-            //第几行
-            int row = 0;
-            int col = 0;
-
-            int bascol = i/(numRows+1);
-
-            if((i%(numRows+1)/numRows ) == 0){
-                row = i%(numRows+1)%numRows;
-                col = 2*bascol;
-            }else{
-                row = numRows/2;
-                col = 2*bascol +  1;
+            if((row+1)>=numRows && addCol==false){
+                addRow=false;
+                addCol=true;
+            }else if((row-1)<0 && addRow == false){
+                addRow=true;
+                addCol=false;
             }
 
-            result[row][col] = c;
+            if(addRow){
+                row++;
+            }else{
+                row--;
+            }
+            if(addCol){
+                col++;
+            }else{
+                col=col;
+            }
         }
+
         StringBuilder stringBuilder = new StringBuilder();
-        for(int i=0;i< result.length;i++){
-            for(int j=0;j<result[i].length;j++){
-                System.out.print(result[i][j]+"\t");
-                if(result[i][j] ==  0){
-                    stringBuilder.append(new String("-"));
+        System.out.println("*****");
+        System.out.println(tempArr.length);
+        System.out.println(tempArr[0].length);
+        System.out.println("*****");
+        for(int i=0;i<tempArr.length;i++){
+            for(int j=0;j<tempArr[i].length;j++){
+                if(tempArr[i][j]==0){
+                    System.out.print("-");
                 }else {
-                    stringBuilder.append(Character.toString(result[i][j]));
+                    stringBuilder.append(tempArr[i][j]);
+                    System.out.print(tempArr[i][j]+"");
                 }
             }
             System.out.println();
-            stringBuilder.append("\r\n");
         }
         return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
-        String paypal = new ZigZagSolution().convert("paypal3223412141", 3);
+
+        /**
+         "kprcfbdpdkurgnbffjjpmhrbfnuywpfgfwimzlbcvvudlxisguiudzwknqkliprpnbbpoermcnpnmahvuppzrljeewronkdblg"
+         81
+         */
+        String paypal = new ZigZagSolution().convert("kprcfbdpdkurgnbffjjpmhrbfnuywpfgfwimzlbcvvudlxisguiudzwknqkliprpnbbpoermcnpnmahvuppzrljeewronkdblg", 81);
+        //String paypal = new ZigZagSolution().convert("abcdeabcde1", 4);
         System.out.println(paypal);
     }
 }
