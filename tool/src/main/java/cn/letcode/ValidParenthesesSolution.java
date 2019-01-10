@@ -23,10 +23,13 @@ public class ValidParenthesesSolution {
                 }
             }
         }
+        if(!stack.empty()){
+            return false;
+        }
         return true;
     }
 
     public static void main(String[] args) {
-        System.out.println(new ValidParenthesesSolution().isValid("]"));
+        System.out.println(new ValidParenthesesSolution().isValid("["));
     }
 }
