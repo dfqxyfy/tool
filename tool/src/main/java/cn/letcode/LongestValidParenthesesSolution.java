@@ -7,9 +7,9 @@ public class LongestValidParenthesesSolution {
         int left=0;
         int right=0;
         for(int i=0;i<s.length();i++){
-            if(s.charAt(i)==')'){
+            if(s.charAt(i)=='('){
                 left++;
-            }else if(s.charAt(i)=='('){
+            }else {
                 right++;
             }
             if(right==left){
@@ -48,7 +48,7 @@ public class LongestValidParenthesesSolution {
 //        s="(()(";
 //        s="))))((()((";
 //        s="()((";
-        s="())";
+        s="(()";
         //s="(())()(()((";
         System.out.println(new LongestValidParenthesesSolution().longestValidParentheses(s));
     }
