@@ -29,7 +29,7 @@ public class MySpringBoot {
 
 
     @RequestMapping("/ab")
-    public String mm(String name ,String value){
+    public String mm(String name ,String value,HttpServletRequest request){
         System.out.println("........................");
         System.out.println(name +" : "+ value);
         System.out.println("........................");

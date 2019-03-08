@@ -13,7 +13,7 @@ public class ConditionTest {
         ExThread exThread = new ExThread(condition);
         exThread.start();
 
-        condition.signal();
+        //condition.signal();
     }
 
 }
