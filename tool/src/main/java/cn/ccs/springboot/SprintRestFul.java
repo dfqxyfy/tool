@@ -1,7 +1,6 @@
 package cn.ccs.springboot;
 
 import com.google.common.collect.Maps;
-import com.sun.javafx.tools.packager.Log;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,8 +16,6 @@ public class SprintRestFul {
         String url = "http://localhost:8001/ab";
         MultiValueMap<String, String> header = new HttpHeaders();
         HttpEntity<?> entity = new HttpEntity<>(header);
-        Log.setDebug(false);
-        System.out.println(Log.isDebug());
         Map<String, String> map = Maps.newHashMap();
         map.put("name","afdassa");
         ResponseEntity<String> exchange = restTemplate.exchange(url, HttpMethod.GET, entity, String.class,map);

@@ -28,10 +28,43 @@ public class MyTest {
 //
 //        }
 
-        ThreadLocal<String> threadLocal = new ThreadLocal<>();
-        threadLocal.set("aaa");
-        threadLocal.get();
-        Object o = null;
-        System.out.println((List)o);
+//        final   ThreadLocal<String> threadLocal = new ThreadLocal<>();
+//        final   ThreadLocal<String> threadLocal2 = new ThreadLocal<>();
+//        threadLocal.set("aaa");
+//        if(true){
+//            return;
+//        }
+        for(int i=0;i<1;i++) {
+            new Thread(){
+                @Override
+                public void run(){
+
+                    final   ThreadLocal<String> threadLocal = new ThreadLocal<>();
+                    //final   ThreadLocal<String> threadLocal2 = new ThreadLocal<>();
+
+                    threadLocal.set("aaa");
+
+
+                    final   ThreadLocal<String> threadLocal2 = new ThreadLocal<>();
+
+
+                    threadLocal2.set("bbb");
+
+
+                    final   ThreadLocal<String> threadLocal3= new ThreadLocal<>();
+
+
+                    threadLocal3.set("ccc");
+                }
+            }.start();
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Object o = null;
+            System.out.println((List) o);
+        }
     }
 }

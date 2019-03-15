@@ -15,7 +15,7 @@ public class JVMObjNum {
         String pid = name.substring(0, index);
         //这里要区分操作系统
         //HotSpotVirtualMachine machine = (HotSpotVirtualMachine) new sun.tools.attach.WindowsAttachProvider().attachVirtualMachine(pid);
-        HotSpotVirtualMachine machine = (HotSpotVirtualMachine) new sun.tools.attach.BsdAttachProvider().attachVirtualMachine(pid);
+        HotSpotVirtualMachine machine = null;//(HotSpotVirtualMachine) new sun.tools.attach.BsdAttachProvider().attachVirtualMachine(pid);
         InputStream is = machine.heapHisto("-all");
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

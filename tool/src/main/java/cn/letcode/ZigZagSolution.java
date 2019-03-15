@@ -42,10 +42,10 @@ public class ZigZagSolution {
         }
 
         StringBuilder stringBuilder = new StringBuilder();
-        System.out.println("*****");
-        System.out.println(tempArr.length);
-        System.out.println(tempArr[0].length);
-        System.out.println("*****");
+//        System.out.println("*****");
+//        System.out.println(tempArr.length);
+//        System.out.println(tempArr[0].length);
+//        System.out.println("*****");
         for(int i=0;i<tempArr.length;i++){
             for(int j=0;j<tempArr[i].length;j++){
                 if(tempArr[i][j]==0){

@@ -8,6 +8,7 @@ public class AtoiSolution {
                 try {
                     return Integer.valueOf(splits[i]);
                 }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
         }
@@ -16,8 +17,8 @@ public class AtoiSolution {
 
     public static void main(String[] args) {
         AtoiSolution atoiSolution = new AtoiSolution();
-        int i = atoiSolution.myAtoi("words and 987");
-        System.out.println(i);
+        int i = atoiSolution.myAtoi("words and 9811111111111111117");
+        System.out.println(i);ThreadLocal l;
     }
 
 }
