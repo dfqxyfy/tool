@@ -37,12 +37,10 @@ public class MinimumPathSumSolution {
     }
 
 
-    public int minPathSum(int[][] grid) {
+    public int minPathSum3(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
-
         int[][] arr = new int[n][m];
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (i == 0 && j == 0) {
@@ -56,13 +54,43 @@ public class MinimumPathSumSolution {
                 }
             }
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                System.out.print(arr[i][j]+"\t");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(arr[i][j] + "\t");
             }
             System.out.println();
         }
         return arr[n - 1][m - 1];
+    }
+
+
+    public int minPathSum(int[][] grid) {
+        int row = grid.length;
+        int col = grid[0].length;
+        int[][] arr = new int[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (i == 0 && j == 0) {
+                    arr[i][j] = grid[i][j];
+                }
+                if ((i == 0 || i == (row - 1)) && j > 0 && j < col) {
+                    arr[i][j] = arr[i][j-1] + grid[i][j];
+                }
+                if ((j == 0 || j == (col - 1)) && i > 0 && i < row) {
+                    arr[i][j] = arr[i-1][j] + grid[i][j];
+                }
+                if (j > 0 && j < col && i > 0 && i < row) {
+                    arr[i][j] = Math.min(arr[i - 1][j], arr[i][j - 1]) + grid[i][j];
+                }
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        return arr[row - 1][col - 1];
     }
 
     public static void main(String[] args) {
