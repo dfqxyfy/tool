@@ -28,11 +28,11 @@ public class WildcardMatchingSolution {
                 }
             }
             positions = nexts;
-            System.out.print(i +"  ");
-            for(Integer j:nexts){
-                System.out.print(j);
-            }
-            System.out.println();
+//            System.out.print(i +"  ");
+//            for(Integer j:nexts){
+//                System.out.print(j);
+//            }
+//            System.out.println();
         }
 
         return positions.contains(s.length());
@@ -40,8 +40,8 @@ public class WildcardMatchingSolution {
 
 
     public static void main(String[] args) {
-        String s = "aab";
-        String p = "a*c";
+        String s = "aaab";
+        String p = "a*b";
 //        s = "aa";
 //        p = "a";
         boolean b = new WildcardMatchingSolution().isMatch(s, p);
