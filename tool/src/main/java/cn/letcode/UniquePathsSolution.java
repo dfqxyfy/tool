@@ -42,6 +42,12 @@ public class UniquePathsSolution {
                 }
             }
         }
+        for(int i=0;i<paths.length;i++){
+            for(int j=0;j<paths[0].length;j++){
+                System.out.print(paths[i][j]+"\t");
+            }
+            System.out.println();
+        }
         return paths[0][0];
     }
 
@@ -60,7 +66,7 @@ public class UniquePathsSolution {
     }
     public static void main(String[] args) {
         long t1 = System.nanoTime();
-        int i = new UniquePathsSolution().uniquePaths(19, 13);
+        int i = new UniquePathsSolution().uniquePaths3(3, 2);
         long t2 = System.nanoTime();
         System.out.println((t2-t1));
         System.out.println((t2-t1));

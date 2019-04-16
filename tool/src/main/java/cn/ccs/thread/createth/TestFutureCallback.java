@@ -33,7 +33,7 @@ public class TestFutureCallback {
         });
 
         //Futures.addCallback(futureTask, futureCallback);
-        executor.shutdown();
+        //executor.shutdown();
     }
 
 
