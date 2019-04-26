@@ -10,7 +10,7 @@ public class LongestSubstringSolution {
         int maxlen=0;
         for(int i=0;i<s.length();i++){
             int len=0;
-            Set<Character> sets = new HashSet<>(1024);
+            Set<Character> sets = new HashSet<>();
             for(int j=i;j<s.length();j++){
                 if(sets.contains(s.charAt(j))){
                     sets.clear();
