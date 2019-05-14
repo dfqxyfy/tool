@@ -14,6 +14,7 @@
         <module>cssh</module>
         <module>myagent</module>
         <module>thirdpay</module>
+        <module>mykafka</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
