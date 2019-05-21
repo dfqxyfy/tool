@@ -16,6 +16,8 @@ public class SudokuSolverSolution {
         //while (b) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
+                //System.out.println(i+"\t"+j);
+
                 if (board[i][j] == '.') {
                     b = false;
                     Set<Character> set = possibleSet(i, j, board);
