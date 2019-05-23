@@ -1,5 +1,6 @@
 package cn.letcode.sudokusolver;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -7,47 +8,73 @@ import java.util.Set;
 public class SudokuSolverSolution {
 
     int count = 0;
+    char[][] resultBoard;
 
-    public void solveSudoku(char[][] board) {
-        System.out.println("**********************" + ++count);
-        print(board);
-        System.out.println("**********************" + ++count);
+    public void solveSudoku(char[][] board ){
+        solveSudoku(board,1);
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                board[i][j]=this.resultBoard[i][j];
+            }
+        }
+
+    }
+
+    public void solveSudoku(char[][] board ,int num) {
+        count++;
+//        System.out.println("********************** " + count+" **********************");
+//        print(resultBoard);
+//        System.out.println("********************** " + count+" **********************");
         boolean b = true;
-        //while (b) {
+        loop:
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                //System.out.println(i+"\t"+j);
 
                 if (board[i][j] == '.') {
                     b = false;
                     Set<Character> set = possibleSet(i, j, board);
                     Iterator<Character> iterator = set.iterator();
                     if (set.size() == 0) {
-                        System.out.println(""+i+"\t"+j);
+//                        System.out.println("处理过程中需要的位置位置集合冲突回退"+i+"\t"+j);
                         return;
                     } else {
-                        //board[i][j] = iterator.next().charValue();
-                        if (iterator.hasNext()) {
-                            char[][] tempboard = new char[9][9];
-
-                            System.arraycopy(board, 0, tempboard, 0, 9);
-                            tempboard[i][j] = iterator.next().charValue();
-                            //System.out.println(""+i+" "+j +" " + set.size());
-                            //print(tempboard);
-                            solveSudoku(tempboard);
+                        //resultBoard[i][j] = iterator.next().charValue();
+                        StringBuilder strb = new StringBuilder();
+                        while(iterator.hasNext()){
+                            char c = iterator.next();
+                            strb.append(c).append(" ");
                         }
+                        iterator = set.iterator();
+//                        System.out.println("处理过程中需要的位置\t"+i+"\t"+j+"\t可能值的集合："+strb.toString());
+                        while(iterator.hasNext()) {
+                            char c = iterator.next();
+                            board[i][j] = c;
+                            char[][] tempboard = cpArray(board);
+//                            System.out.println("第 "+num+" 个.值，处理过程中需要的位置\t"+i+"\t"+j+"\t可能值的集合："+strb.toString()+"\t使用值："+c);
+                            solveSudoku(tempboard,num+1);
+                        }
+
                     }
+                    break loop;
                 }
             }
         }
-        //}
-
-        if (b) {
-            System.out.println(">>>>>>>>>>>>>>>>>result>>>>>>>>>>>>>>>");
-            print(board);
+        if(b){
+            this.resultBoard =board;
+            return;
         }
+
     }
 
+    private char[][] cpArray(char[][] board){
+        char[][] tempboard= new char[board.length][board[0].length];
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                tempboard[i][j]=board[i][j];
+            }
+        }
+        return tempboard;
+    }
 
     public Set<Character> possibleSet(int row, int col, char[][] board) {
         //行
@@ -79,35 +106,27 @@ public class SudokuSolverSolution {
     }
 
     private void print(char[][] board) {
-        System.out.println("*******");
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 System.out.print(board[i][j] + "\t");
             }
             System.out.println();
         }
-        System.out.println("*******");
     }
 
     public static void main(String[] args) {
         char[][] board = new char[][]{{'5', '3', '.', '.', '7', '.', '.', '.', '.'}, {'6', '.', '.', '1', '9', '5', '.', '.', '.'}, {'.', '9', '8', '.', '.', '.', '.', '6', '.'}, {'8', '.', '.', '.', '6', '.', '.', '.', '3'}, {'4', '.', '.', '8', '.', '3', '.', '.', '1'}, {'7', '.', '.', '.', '2', '.', '.', '.', '6'}, {'.', '6', '.', '.', '.', '.', '2', '8', '.'}, {'.', '.', '.', '4', '1', '9', '.', '.', '5'}, {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 //        char[][] tempboard = new char[9][9];
-//        System.arraycopy(board, 0, tempboard, 0, 9);
+//
+//        new SudokuSolverSolution().print(resultBoard);
+//        System.arraycopy(resultBoard, 0, tempboard, 0, 9);
+//        tempboard[0][0]='a';
+//        new SudokuSolverSolution().print(resultBoard);
+//        new SudokuSolverSolution().print(tempboard);
 
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(board[i][j] + "\t");
-            }
-            System.out.println();
-        }
+        SudokuSolverSolution sudokuSolverSolution = new SudokuSolverSolution();
+        sudokuSolverSolution.solveSudoku(board);
+        sudokuSolverSolution.print(board);
 
-        new SudokuSolverSolution().solveSudoku(board);
-        System.out.println();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(board[i][j] + "\t");
-            }
-            System.out.println();
-        }
     }
 }
