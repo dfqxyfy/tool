@@ -23,7 +23,7 @@ public class SpiralMatrixSolution {
                 ans.add(matrix[i][ce]);
             }
             if (rs < re && cs < ce) {
-                for (int i = ce - 1; i > cs; i--) {
+                for (int i = ce - 1; i >= cs; i--) {
                     ans.add(matrix[re][i]);
                 }
                 for (int i = re - 1; i > rs; i--) {
@@ -52,7 +52,7 @@ public class SpiralMatrixSolution {
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9},
-                {7, 8, 9},
+                {17, 18, 19},
 
 
 //                {1,2,3,4,5,6,7,8,9,10},
