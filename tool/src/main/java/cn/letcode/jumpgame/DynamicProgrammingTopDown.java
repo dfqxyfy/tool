@@ -29,6 +29,13 @@ public class DynamicProgrammingTopDown {
     }
 
     public static void main(String[] args) {
+
+//        try {
+//            Thread.sleep(100000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         int[] nums = new int[]{3, 2, 1, 0, 0, 4};
 //        nums = new int[]{2, 0, 0};
 //        nums = new int[]{2, 3, 1, 1, 4};
