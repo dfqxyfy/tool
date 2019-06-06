@@ -15,23 +15,32 @@ public class NQueens {
         }
         nQueens(new ArrayList<>());
         num=resList.size();
-        return null;
+        return changePos2Str();
     }
 
-    public List<List<String>> print(){
+    public List<List<String>> changePos2Str(){
+        List<List<String>> list = new ArrayList<>();
         for(List<Pos> lp:resList){
             int[][] qn=new int[n][n];
             for(Pos p:lp){
                 qn[p.x][p.y]=1;
             }
+            List<String> sList=new ArrayList<>();
             for(int i=0;i<n;i++){
+                StringBuilder strb = new StringBuilder();
+
                 for(int j=0;j<n;j++){
-                    System.out.print(qn[i][j]+"\t");
+                    if(qn[i][j]==0){
+                        strb.append(".");
+                    }else{
+                        strb.append("Q");
+                    }
                 }
-                System.out.println();
+                sList.add(strb.toString());
             }
+            list.add(sList);
         }
-        return null;
+        return list;
     }
 
     public void nQueens(List<Pos> list){
@@ -60,7 +69,7 @@ public class NQueens {
 
     public static void main(String[] args) {
         NQueens nQueens = new NQueens();
-        nQueens.solveNQueens(5);
+        nQueens.solveNQueens(4);
         System.out.println(nQueens.num);
     }
 
