@@ -15,6 +15,7 @@
         <module>myagent</module>
         <module>thirdpay</module>
         <module>mykafka</module>
+        <module>testtool</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
