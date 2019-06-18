@@ -7,7 +7,7 @@ public class ValidateBinarySearchTree {
             return true;
         }
         boolean left = isValidBST(root.left);
-        if(preVal!=null && root.val>=preVal){
+        if(preVal!=null && preVal>=root.val){
             return false;
         }
         preVal=root.val;
