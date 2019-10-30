@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <commons.version>3.4</commons.version>
-        <org.apache.spark-version>2.1.0</org.apache.spark-version>
+        <org.apache.spark-version>2.4.4</org.apache.spark-version>
     </properties>
 
     <dependencies>
