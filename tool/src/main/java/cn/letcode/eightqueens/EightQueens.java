@@ -15,7 +15,7 @@ public class EightQueens {
         while (notValid) {
             for (int j = 0; j < 8; j++) {
                 Pos pos = new Pos(i, j);
-                System.out.println(i + "\t" + j);
+                //System.out.println(i + "\t" + j);
                 if (isValid(pos, list)) {
                     list.add(pos);
                     if (i == 7) {
@@ -47,7 +47,7 @@ public class EightQueens {
         final EightQueens eightQueens = new EightQueens();
         eightQueens.allQueens();
         for (Pos p : eightQueens.resList) {
-            System.out.println(p.i + "\t" + p.j);
+            //System.out.println(p.i + "\t" + p.j);
             queens[p.i][p.j] = 1;
         }
         for (int i = 0; i < queens.length; i++) {
